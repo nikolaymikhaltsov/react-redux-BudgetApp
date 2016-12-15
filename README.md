@@ -9,3 +9,7 @@ Fields are: Name. Cost, Group. % from Salary field should be calculated.
 Save data to local storage or any you wish (optional).
 
 Technology stack: React, Redux/Flux, ES6, Webpack.
+
+To get started, type:
+npm install
+npm start
