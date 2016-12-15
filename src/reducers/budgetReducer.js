@@ -7,9 +7,11 @@ import * as utils from '../Utils';
 export default function budgetReducer(state = initialState.budgetItems, action) {
   switch (action.type) {
 
-    case types.LOAD_BUDGET_SUCCESS:
-      return action.budgetItems
-          .map(item => Object.assign({}, item, {prcnt: utils.getPercentFromSalary(item.cost, action.salary)}));
+    case types.LOAD_BUDGET_SUCCESS: {
+      let items = action.budgetItems.map(item => Object.assign({}, item,
+        {prcnt: utils.getPercentFromSalary(item.cost, action.salary)}));
+      return utils.sortItemsByProperty(items, action.sortingProperty);
+    }
 
     case types.SAVE_BUDGET_SUCCESS:
       return [
@@ -40,4 +42,3 @@ export default function budgetReducer(state = initialState.budgetItems, action) 
       return state;
   }
 }
-

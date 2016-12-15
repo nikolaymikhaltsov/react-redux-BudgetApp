@@ -2,7 +2,7 @@ export default {
   budgetItems: [],
   defaults: {
     salary: 1000,
-    defaultSortedProperty: "cost",
+    defaultSortedProperty: "name",
     groups: ['Traveling', 'Shopping', 'Tickets', 'Meal' ],
     itemProperties: [
       {id: "name", description: 'Name'},

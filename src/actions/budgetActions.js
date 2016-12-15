@@ -2,8 +2,8 @@ import BudgetApi from '../api/mockBudgetApi';
 import * as types from './actionTypes';
 import * as utils from '../Utils';
 
-export function loadBudgetItemsSuccess(budgetItems, salary) {
-  return {type: types.LOAD_BUDGET_SUCCESS, budgetItems, salary};
+export function loadBudgetItemsSuccess(budgetItems, salary, sortingProperty) {
+  return {type: types.LOAD_BUDGET_SUCCESS, budgetItems, salary, sortingProperty};
 }
 
 export function saveBudgetItemSuccess(budgetItem) {
@@ -23,10 +23,10 @@ export function deleteBudgetItemSuccess(budgetItem) {
  * @param salary - salary's initial value used to
  *  calculate item's '% from Salary field' on start of app
  */
-export function loadBudgetItems(salary) {
+export function loadBudgetItems(salary, sortingProperty) {
   return dispatch => {
     return BudgetApi.getAllBudgetItems().then(items => {
-      dispatch(loadBudgetItemsSuccess(items, salary));
+      dispatch(loadBudgetItemsSuccess(items, salary, sortingProperty));
     }).catch(error => {
       throw (error);
     });

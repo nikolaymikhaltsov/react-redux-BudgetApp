@@ -11,8 +11,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const appStore = configureStore();
 const initialSalary = appStore.getState().defaults.salary;
+const sortedProperty = appStore.getState().defaults.defaultSortedProperty;
 
-appStore.dispatch(loadBudgetItems(initialSalary));
+appStore.dispatch(loadBudgetItems(initialSalary, sortedProperty));
 
 render(
   <Provider store={appStore}>
