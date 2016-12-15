@@ -123,7 +123,7 @@ class BudgetPage extends React.Component {
         <div>
           <input
             type="submit"
-            value="Add New Item"
+            value="Add Record"
             className="btn btn-primary"
             onClick={this.showModal} />
         </div>
