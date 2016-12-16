@@ -166,7 +166,7 @@ BudgetPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-  const groupsFormattedForDropdown = state.initialState.groups.map(group => {
+  const groupsFormattedForDropdown = state.budget.groups.map(group => {
     return {
       value: group,
       text: group
@@ -174,11 +174,11 @@ function mapStateToProps(state, ownProps) {
   });
 
   return {
-    items: state.initialState.budgetItems,
-    itemProperties: state.initialState.itemProperties,
+    items: state.budget.budgetItems,
+    itemProperties: state.budget.itemProperties,
     emptyItem: {id: "", name: "", cost: 0, group: ""},
-    salary: state.initialState.salary,
-    sortingProperty: state.initialState.sortingProperty,
+    salary: state.budget.salary,
+    sortingProperty: state.budget.sortingProperty,
     groups: groupsFormattedForDropdown
   };
 }

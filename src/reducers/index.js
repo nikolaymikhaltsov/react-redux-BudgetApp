@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import initialState from './budgetReducer';
+import budget from './budgetReducer';
 
 const rootReducer = combineReducers({
-  initialState
+  budget
 });
 
 export default rootReducer;
