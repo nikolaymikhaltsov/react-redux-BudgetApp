@@ -43,6 +43,7 @@ export default function budgetReducer(state = initialState, action) {
 
     case types.UPDATE_SALARY: {
       newState.budgetItems = state.budgetItems.map(item => Object.assign({}, item, {prcnt: utils.getPercentFromSalary(item.cost, action.salary)}));
+      newState.salary = action.salary;
       return newState;
     }
 

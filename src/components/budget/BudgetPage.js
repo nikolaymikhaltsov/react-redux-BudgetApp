@@ -12,7 +12,7 @@ class BudgetPage extends React.Component {
 
     this.state = {
       sortingProperty: this.props.sortingProperty,
-      salary: props.salary,
+      salary: this.props.salary,
       isOpen: false,
       budgetItem: this.props.emptyItem,
       errors: {}
