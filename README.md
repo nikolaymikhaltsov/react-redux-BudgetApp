@@ -11,5 +11,7 @@ Save data to local storage or any you wish (optional).
 Technology stack: React, Redux/Flux, ES6, Webpack.
 
 To get started, type:
+```bash
 npm install
 npm start
+```
