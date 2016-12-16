@@ -11,7 +11,7 @@ class BudgetPage extends React.Component {
     super(props, context);
 
     this.state = {
-      sortedProperty: this.props.sortedProperty,
+      sortingProperty: this.props.sortingProperty,
       salary: props.salary,
       isOpen: false,
       budgetItem: this.props.emptyItem,
@@ -50,14 +50,13 @@ class BudgetPage extends React.Component {
   }
 
   sortItems(sortByProperty) {
-    this.setState({sortedProperty: sortByProperty});
+    this.setState({sortingProperty: sortByProperty});
     const items = this.props.items;
     this.props.actions.sortItems(items, sortByProperty);
   }
 
   reverseItems() {
-    const items = this.props.items;
-    this.props.actions.reverseItems(items);
+    this.props.actions.reverseItems();
   }
 
   updateBudgetItemState(event) {
@@ -142,7 +141,7 @@ class BudgetPage extends React.Component {
           itemProperties={this.props.itemProperties}
           reverseItems={this.reverseItems}
           sortItems={this.sortItems}
-          sortingProperty={this.state.sortedProperty}
+          sortingProperty={this.state.sortingProperty}
           onEdit={this.openModalForEdit}
           deleteBudgetItem={this.deleteBudgetItem}/>
 
@@ -162,12 +161,12 @@ BudgetPage.propTypes = {
   itemProperties: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   salary: PropTypes.number.isRequired,
-  sortedProperty: PropTypes.string.isRequired,
+  sortingProperty: PropTypes.string.isRequired,
   emptyItem: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  const groupsFormattedForDropdown = state.defaults.groups.map(group => {
+  const groupsFormattedForDropdown = state.initialState.groups.map(group => {
     return {
       value: group,
       text: group
@@ -175,11 +174,11 @@ function mapStateToProps(state, ownProps) {
   });
 
   return {
-    items: state.budgetItems,
-    itemProperties: state.defaults.itemProperties,
+    items: state.initialState.budgetItems,
+    itemProperties: state.initialState.itemProperties,
     emptyItem: {id: "", name: "", cost: 0, group: ""},
-    salary: state.defaults.salary,
-    sortedProperty: state.defaults.defaultSortedProperty,
+    salary: state.initialState.salary,
+    sortingProperty: state.initialState.sortingProperty,
     groups: groupsFormattedForDropdown
   };
 }
